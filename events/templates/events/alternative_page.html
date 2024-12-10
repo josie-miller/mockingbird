@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="{% static 'events/css/styles.css' %}">
     <title>Explore Rooms</title>
     <style>
+        /* Styling for Back Button */
         .back-button {
             display: inline-block;
             margin: 20px 0;
@@ -19,6 +20,34 @@
         .back-button:hover {
             background-color: #555;
         }
+
+        /* Container */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Resized Image */
+        .alternative-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Footer Styling */
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 50px;
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 <body>
@@ -27,6 +56,7 @@
     </header>
 
     <div class="container">
+        <!-- Resized Image -->
         <img src="{% static 'events/img/hi.png' %}" alt="Alternative Image" class="alternative-image">
         
         <!-- Back Button -->
@@ -34,7 +64,7 @@
     </div>
 
     <footer class="footer">
-        <p> Mockingbird | No Rights Reserved</p>
+        <p>Mockingbird | No Rights Reserved</p>
     </footer>
 </body>
 </html>
