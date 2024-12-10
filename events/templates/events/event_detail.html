@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'events/css/styles.css' %}">
+    <title>{{ event.title }}</title>
+</head>
+<body>
+    <header class="header">
+        <h1>{{ event.title }}</h1>
+    </header>
+
+    <div class="container">
+        <p class="event-date">{{ event.date }}</p>
+        <p class="event-description">{{ event.description }}</p>
+
+        <div class="media-content">
+            {% if event.media_type == "photo" %}
+                <img src="{{ event.media_file.url }}" alt="{{ event.title }}" class="event-media">
+            {% elif event.media_type == "audio" %}
+                <audio controls class="event-media">
+                    <source src="{{ event.media_file.url }}" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            {% elif event.media_type == "video" %}
+                <video controls class="event-media">
+                    <source src="{{ event.media_file.url }}" type="video/mp4">
+                    Your browser does not support the video element.
+                </video>
+            {% endif %}
+        </div>
+
+        <a class="back-link" href="{% url 'theme_events' theme_id=event.theme_id %}">← Back to {{ theme.name }}</a>
+    </div>
+
+    <footer class="footer">
+        <p>© 2024 Mockingbird | All Rights Reserved</p>
+    </footer>
+</body>
+</html>

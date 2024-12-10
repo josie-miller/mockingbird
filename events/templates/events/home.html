@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'events/css/styles.css' %}">
+    <title>Museum Themes</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: #ffffff;
+            color: #333;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar h1 {
+            margin: 0;
+            font-size: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Container */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Image Map Styling */
+        .image-map-container {
+            position: relative;
+            display: inline-block;
+            max-width: 100%;
+        }
+
+        .image-map-container img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 50px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <h1>Museum Themes</h1>
+    </div>
+
+    <!-- Image Map Container -->
+    <div class="container">
+        <div class="image-map-container">
+            <img src="{% static 'events/img/Untitled_Artwork 4.png' %}" usemap="#image-map" alt="Museum Themes Map" id="theme-map">
+            <map name="image-map">
+                <area target="" alt="Exhibit 3" title="Exhibit 3" href="{% url 'theme_events' theme_id=3 %}" coords="282,1336,113" shape="circle">
+                <area target="" alt="Exhibit 2" title="Exhibit 2" href="{% url 'theme_events' theme_id=2 %}" coords="570,1695,158" shape="circle">
+                <area target="" alt="Exhibit 1" title="Exhibit 1" href="{% url 'theme_events' theme_id=1 %}" coords="508,2035,130" shape="circle">
+                <area target="" alt="Civil Rights" title="Civil Rights" href="{% url 'theme_events' theme_id=4 %}" coords="946,1536,1372,1201" shape="rect">
+                <area target="" alt="Womens Rights" title="Womens Rights" href="{% url 'theme_events' theme_id=5 %}" coords="951,1588,1365,1667" shape="rect">
+                <area target="" alt="Telephone" title="Telephone" href="{% url 'theme_events' theme_id=6 %}" coords="935,2144,928,1703,1363,1700,1370,1818,1061,1825,1063,2140" shape="poly">
+                <area target="" alt="JFK" title="JFK" href="{% url 'theme_events' theme_id=7 %}" coords="1102,1872,1367,2142" shape="rect">
+                <area target="" alt="World Expo" title="World Expo" href="{% url 'theme_events' theme_id=8 %}" coords="2099,1656,235" shape="circle">
+            </map>
+        </div>
+    </div>
+
+    <!-- JavaScript for Responsive Image Map -->
+    <script>
+        /**
+         * ImageMapResizer v1.0
+         * Resizes image maps responsively with image resizing
+         */
+        (function() {
+            function resizeMap() {
+                var maps = document.querySelectorAll('map');
+                maps.forEach(function(map) {
+                    var img = document.querySelector('img[usemap="#' + map.name + '"]');
+                    if (!img) return;
+
+                    var imgWidth = img.naturalWidth,
+                        imgHeight = img.naturalHeight,
+                        newWidth = img.offsetWidth,
+                        newHeight = img.offsetHeight,
+                        scaleX = newWidth / imgWidth,
+                        scaleY = newHeight / imgHeight;
+
+                    map.querySelectorAll('area').forEach(function(area) {
+                        var coords = area.dataset.coords || area.coords;
+                        if (!area.dataset.coords) area.dataset.coords = coords;
+
+                        area.coords = coords.split(',').map(function(coord, i) {
+                            return Math.round(i % 2 === 0 ? coord * scaleX : coord * scaleY);
+                        }).join(',');
+                    });
+                });
+            }
+
+            window.addEventListener('resize', resizeMap);
+            window.addEventListener('load', resizeMap);
+        })();
+    </script>
+
+    <!-- Footer -->
+    <footer>
+        <p>© Mockingbird | All Rights Reserved</p>
+    </footer>
+</body>
+</html>
