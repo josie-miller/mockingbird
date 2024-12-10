@@ -3,7 +3,7 @@
 <head>
     {% load static %}
     <link rel="stylesheet" href="{% static 'events/css/styles.css' %}">
-    <title>{{ theme.name }}</title>
+    <title>Explore Rooms</title>
     <style>
         .back-button {
             display: inline-block;
@@ -23,25 +23,12 @@
 </head>
 <body>
     <header class="header">
-        <h1>{{ theme.name }}</h1>
+        <h1>Explore Rooms</h1>
     </header>
 
     <div class="container">
-        <p class="theme-description">{{ theme.description }}</p>
-
-        <div class="events-grid">
-            {% for event in events %}
-                <div class="event-card">
-                    <div class="event-card-content">
-                        <h3 class="event-title">{{ event.title }}</h3>
-                        <p class="event-date">{{ event.date }}</p>
-                        <p class="event-description">{{ event.description|truncatewords:12 }}</p>
-                        <a class="event-link" href="{% url 'event_detail' theme_id=event.theme_id event_id=event.id %}">Learn More</a>
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
-
+        <img src="{% static 'events/img/hi.png' %}" alt="Alternative Image" class="alternative-image">
+        
         <!-- Back Button -->
         <a href="{% url 'home' %}" class="back-button">← Back to Home</a>
     </div>

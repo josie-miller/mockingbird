@@ -40,3 +40,5 @@ def event_detail(request, theme_id, event_id):
         "event": event,
         "theme_id": theme_id,
     })
+def alternative_page(request):
+    return render(request, "events/alternative_page.html")

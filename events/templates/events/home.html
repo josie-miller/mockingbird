@@ -63,6 +63,26 @@
             margin-top: 50px;
             font-size: 0.9rem;
         }
+
+        /* Navigate Button */
+        .navigate-button {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .navigate-button .button {
+            display: inline-block;
+            background-color: #333;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .navigate-button .button:hover {
+            background-color: #555;
+        }
     </style>
 </head>
 <body>
@@ -85,6 +105,11 @@
                 <area target="" alt="JFK" title="JFK" href="{% url 'theme_events' theme_id=7 %}" coords="1102,1872,1367,2142" shape="rect">
                 <area target="" alt="World Expo" title="World Expo" href="{% url 'theme_events' theme_id=8 %}" coords="2099,1656,235" shape="circle">
             </map>
+        </div>
+
+        <!-- Navigate Button -->
+        <div class="navigate-button">
+            <a href="{% url 'alternative_page' %}" class="button">Explore Rooms</a>
         </div>
     </div>
 
@@ -126,7 +151,7 @@
 
     <!-- Footer -->
     <footer>
-        <p>© Mockingbird | All Rights Reserved</p>
+        <p> Mockingbird | No Rights Reserved</p>
     </footer>
 </body>
 </html>

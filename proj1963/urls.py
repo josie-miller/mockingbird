@@ -26,6 +26,7 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('theme/<int:theme_id>/', views.theme_events, name='theme_events'),
     path('theme/<int:theme_id>/event/<int:event_id>/', views.event_detail, name='event_detail'),
+    path('alternative/', views.alternative_page, name='alternative_page'),
 ] 
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
